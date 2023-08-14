@@ -1,4 +1,4 @@
-package com.example.inventorymanagementsystem.model;
+package com.example.inventorymanagementsystem.domain;
 
 public class ItemLocation {
 

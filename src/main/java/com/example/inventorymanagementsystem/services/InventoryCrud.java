@@ -1,8 +1,8 @@
 package com.example.inventorymanagementsystem.services;
 
-import com.example.inventorymanagementsystem.model.Inventory;
-import com.example.inventorymanagementsystem.model.ItemCategory;
-import com.example.inventorymanagementsystem.model.ItemLocation;
+import com.example.inventorymanagementsystem.domain.Inventory;
+import com.example.inventorymanagementsystem.domain.ItemCategory;
+import com.example.inventorymanagementsystem.domain.ItemLocation;
 import com.example.inventorymanagementsystem.resources.InventoryResource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

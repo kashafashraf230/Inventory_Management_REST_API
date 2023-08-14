@@ -193,3 +193,31 @@
 16:58:16.020 HikariPool-4 - Start completed.
 16:58:16.020 2023-08-13 16:58:16_GET_getInventoryById_Request Received
 16:58:16.020 2023-08-13 16:58:16_GET_getInventoryById_Response Sent
+09:28:27.490 WELD-000900: 3.1.9 (Final)
+09:28:27.944 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+09:28:28.259 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+09:28:30.347 WELD-ENV-002003: Weld SE container 2197b8e7-d0e8-4f65-85f7-c6a5eec13d05 initialized
+09:28:30.603 HikariPool-1 - Starting...
+09:28:31.643 HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ef5d173
+09:28:31.647 HikariPool-1 - Start completed.
+09:28:32.614 2023-08-14 09:28:32_GET_Authentication_Authentication failed
+09:28:33.202 2023-08-14 09:28:33_GET_Authentication_Authentication failed
+09:28:46.534 2023-08-14 09:28:46_GET_Authentication_Authentication successful
+09:28:46.545 HikariPool-2 - Starting...
+09:28:46.583 HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@fb0cdc3
+09:28:46.583 HikariPool-2 - Start completed.
+09:28:46.584 2023-08-14 09:28:46_GET_getInventoryList_Request received
+09:28:46.584 2023-08-14 09:28:46_GET_getInventoryList_Response Sent
+09:29:08.323 2023-08-14 09:29:08_POST_Authentication_Authentication failed
+09:29:31.745 2023-08-14 09:29:31_POST_Authentication_Authentication successful
+09:29:31.863 HikariPool-3 - Starting...
+09:29:31.895 HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7420e354
+09:29:31.895 HikariPool-3 - Start completed.
+09:29:31.896 2023-08-14 09:29:31_POST_createInventory_Request received
+09:29:31.938 2023-08-14 09:29:31_POST_createInventory_Response Sent
+09:30:00.716 2023-08-14 09:30:00_GET_Authentication_Authentication successful
+09:30:00.717 HikariPool-4 - Starting...
+09:30:00.738 HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3f658732
+09:30:00.739 HikariPool-4 - Start completed.
+09:30:00.740 2023-08-14 09:30:00_GET_getInventoryList_Request received
+09:30:00.740 2023-08-14 09:30:00_GET_getInventoryList_Response Sent
