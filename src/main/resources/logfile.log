@@ -221,3 +221,128 @@
 09:30:00.739 HikariPool-4 - Start completed.
 09:30:00.740 2023-08-14 09:30:00_GET_getInventoryList_Request received
 09:30:00.740 2023-08-14 09:30:00_GET_getInventoryList_Response Sent
+16:20:35.036 WELD-000900: 3.1.9 (Final)
+16:20:35.497 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+16:20:35.803 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+16:20:37.233 WELD-ENV-002003: Weld SE container ff0013e5-c7bc-44ac-bc13-bc4dce4f3581 initialized
+16:20:38.069 2023-08-19 16:20:38_GET_Authentication_Authentication failed
+16:20:38.769 2023-08-19 16:20:38_GET_Authentication_Authentication failed
+16:35:27.323 WELD-000900: 3.1.9 (Final)
+16:35:27.737 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+16:35:28.062 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+16:35:29.588 WELD-ENV-002003: Weld SE container 3e7bcd0d-dea9-4e9b-9bd4-2044201d5821 initialized
+16:35:30.399 2023-08-19 16:35:30_GET_Authentication_Authentication failed
+16:35:30.689 2023-08-19 16:35:30_GET_Authentication_Authentication failed
+16:35:38.974 HikariPool-1 - Starting...
+16:35:39.983 HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3b80b569
+16:35:39.988 HikariPool-1 - Start completed.
+16:35:40.223 2023-08-19 16:35:40_GET_Authentication_Authentication successful
+16:35:40.233 2023-08-19 16:35:40_GET_getInventoryList_Request received
+16:35:40.234 2023-08-19 16:35:40_GET_getInventoryList_Response Sent
+16:35:40.234 HikariPool-2 - Starting...
+16:35:40.283 HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7171446f
+16:35:40.283 HikariPool-2 - Start completed.
+16:35:59.060 HikariPool-3 - Starting...
+16:35:59.083 HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5bd82797
+16:35:59.083 HikariPool-3 - Start completed.
+16:35:59.085 2023-08-19 16:35:59_GET_Authentication_Authentication successful
+16:35:59.088 2023-08-19 16:35:59_GET_getInventoryById_Request Received
+16:35:59.088 2023-08-19 16:35:59_GET_getInventoryById_Response Sent
+16:35:59.089 HikariPool-4 - Starting...
+16:35:59.114 HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6f6c6fa0
+16:35:59.114 HikariPool-4 - Start completed.
+17:28:16.633 WELD-000900: 3.1.9 (Final)
+17:28:17.055 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+17:28:17.329 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+17:28:18.762 WELD-ENV-002003: Weld SE container b048db81-2b1f-4d8d-9321-9883e9d50d96 initialized
+17:28:19.683 2023-08-19 17:28:19_GET_Authentication_Authentication failed
+17:28:19.695 2023-08-19 17:28:19_GET_getInventoryList_Request received
+17:28:19.695 2023-08-19 17:28:19_GET_getInventoryList_Response Sent
+17:28:19.754 HikariPool-1 - Starting...
+17:28:20.975 HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2dfbc164
+17:28:20.982 HikariPool-1 - Start completed.
+17:28:22.540 2023-08-19 17:28:22_GET_Authentication_Authentication failed
+17:28:22.541 2023-08-19 17:28:22_GET_getInventoryList_Request received
+17:28:22.541 2023-08-19 17:28:22_GET_getInventoryList_Response Sent
+17:28:22.542 HikariPool-2 - Starting...
+17:28:22.598 HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@543a33b5
+17:28:22.598 HikariPool-2 - Start completed.
+17:32:27.808 WELD-000900: 3.1.9 (Final)
+17:32:28.152 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+17:32:28.494 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+17:32:29.732 WELD-ENV-002003: Weld SE container 8695c090-a844-42c2-864b-a3a4970819d9 initialized
+17:32:30.906 2023-08-19 17:32:30_GET_Authentication_Authentication failed
+17:32:31.263 2023-08-19 17:32:31_GET_Authentication_Authentication failed
+17:32:46.339 HikariPool-1 - Starting...
+17:32:47.377 HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4c571f61
+17:32:47.384 HikariPool-1 - Start completed.
+17:32:47.476 2023-08-19 17:32:47_GET_Authentication_Authentication failed
+17:34:01.243 WELD-000900: 3.1.9 (Final)
+17:34:01.649 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+17:34:01.965 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+17:34:03.253 WELD-ENV-002003: Weld SE container 799f16e6-c2d6-4910-960e-23c3176cb916 initialized
+17:34:04.393 2023-08-19 17:34:04_GET_Authentication_Authentication failed
+17:34:04.764 2023-08-19 17:34:04_GET_Authentication_Authentication failed
+17:34:16.535 HikariPool-1 - Starting...
+17:34:17.610 HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ce5ea78
+17:34:17.620 HikariPool-1 - Start completed.
+17:34:17.821 2023-08-19 17:34:17_GET_Authentication_Authentication successful
+17:34:17.821 2023-08-19 17:34:17_GET_getInventoryList_Request received
+17:34:17.821 2023-08-19 17:34:17_GET_getInventoryList_Response Sent
+17:34:17.824 HikariPool-2 - Starting...
+17:34:17.884 HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4cb3a40d
+17:34:17.885 HikariPool-2 - Start completed.
+17:37:16.583 WELD-000900: 3.1.9 (Final)
+17:37:16.856 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+17:37:17.064 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+17:37:18.076 WELD-ENV-002003: Weld SE container 978265ab-1fdb-4afd-a02c-a67170edf407 initialized
+17:37:18.875 2023-08-19 17:37:18_GET_Authentication_Authentication failed
+17:37:19.129 2023-08-19 17:37:19_GET_Authentication_Authentication failed
+17:37:26.401 HikariPool-1 - Starting...
+17:37:27.442 HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4c571f61
+17:37:27.448 HikariPool-1 - Start completed.
+17:37:27.543 2023-08-19 17:37:27_GET_Authentication_Authentication successful
+17:37:27.544 2023-08-19 17:37:27_GET_getInventoryList_Request received
+17:37:27.544 2023-08-19 17:37:27_GET_getInventoryList_Response Sent
+17:37:27.544 HikariPool-2 - Starting...
+17:37:27.597 HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@78149262
+17:37:27.598 HikariPool-2 - Start completed.
+17:37:37.460 HikariPool-3 - Starting...
+17:37:37.497 HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@59130a2b
+17:37:37.497 HikariPool-3 - Start completed.
+17:37:37.501 2023-08-19 17:37:37_GET_Authentication_Authentication successful
+17:37:37.502 2023-08-19 17:37:37_GET_getInventoryById_Request Received
+17:37:37.502 2023-08-19 17:37:37_GET_getInventoryById_Response Sent
+17:37:37.502 HikariPool-4 - Starting...
+17:37:37.552 HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6c17f993
+17:37:37.553 HikariPool-4 - Start completed.
+21:43:15.666 WELD-000900: 3.1.9 (Final)
+21:43:16.078 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+21:43:16.362 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+21:43:17.918 WELD-ENV-002003: Weld SE container ef368b80-965a-485a-ab3f-6161feb1b6c5 initialized
+21:46:40.685 WELD-000900: 3.1.9 (Final)
+21:46:40.951 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+21:46:41.145 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+21:46:42.479 WELD-ENV-002003: Weld SE container d3fbe1d4-5c1b-43fb-88fc-669b107e4a15 initialized
+21:51:20.864 WELD-000900: 3.1.9 (Final)
+21:51:21.151 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+21:51:21.418 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+21:51:22.936 WELD-ENV-002003: Weld SE container 4eab502c-f50b-4442-95c0-21063b5edc41 initialized
+21:54:21.797 WELD-000900: 3.1.9 (Final)
+21:54:22.125 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+21:54:22.392 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+21:54:23.685 WELD-ENV-002003: Weld SE container afe083a3-c27c-4213-990c-ebcc2fce8e0a initialized
+21:56:40.820 WELD-000900: 3.1.9 (Final)
+21:56:41.105 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+21:56:41.329 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+21:56:42.492 WELD-ENV-002003: Weld SE container c20aca15-9833-4747-b897-06bc07ba8dd6 initialized
+21:57:49.228 WELD-000900: 3.1.9 (Final)
+21:57:49.496 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+21:57:49.727 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+21:57:50.904 WELD-ENV-002003: Weld SE container a99f1e1c-7172-4169-8e24-1448a0e18e24 initialized
+21:59:08.883 WELD-000900: 3.1.9 (Final)
+21:59:09.131 WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+21:59:09.391 WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+21:59:10.508 WELD-ENV-002003: Weld SE container e10c0406-a8de-4827-b110-7249556b4494 initialized
+21:59:11.389 2023-08-19 21:59:11_GET_Authentication_Authentication failed
+21:59:11.877 2023-08-19 21:59:11_GET_Authentication_Authentication failed

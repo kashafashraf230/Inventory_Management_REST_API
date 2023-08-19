@@ -7,23 +7,23 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-class InventoryCrudTest {
+class InventoryServiceTest {
 
-    InventoryCrud inventoryCrud;
+    InventoryService inventoryService;
     ItemCategory ic = new ItemCategory(22, "Laptop");
     ItemLocation il = new ItemLocation(7, "Phoenix");
     Inventory inventory = new Inventory(1, "iPhone 13", 22, ic, il);
 
     @BeforeEach
     void setUp() {
-       inventoryCrud = new InventoryCrud();
+       inventoryService = new InventoryService();
     }
 
 
     @Test
     void getInventoryById() {
 
-        Inventory result = (Inventory) inventoryCrud.getInventoryById(1);
+        Inventory result = (Inventory) inventoryService.getInventoryById(1);
 
         assertEquals(inventory.getId(), result.getId());
         assertEquals(inventory.getItem_name(), result.getItem_name());

@@ -1,4 +1,4 @@
-package com.example.inventorymanagementsystem.services;
+package com.example.inventorymanagementsystem.commons;
 
 public class UserSQL {
 

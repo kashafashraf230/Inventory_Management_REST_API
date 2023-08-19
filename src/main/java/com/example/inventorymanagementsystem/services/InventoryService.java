@@ -1,5 +1,7 @@
 package com.example.inventorymanagementsystem.services;
 
+import com.example.inventorymanagementsystem.commons.DBHikariCP;
+import com.example.inventorymanagementsystem.commons.InventorySql;
 import com.example.inventorymanagementsystem.domain.Inventory;
 import com.example.inventorymanagementsystem.domain.ItemCategory;
 import com.example.inventorymanagementsystem.domain.ItemLocation;
@@ -9,31 +11,40 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javax.cache.Cache;
+import javax.cache.CacheManager;
+import javax.cache.Caching;
 
-public class InventoryCrud {
 
-    Connection connection;
+public class InventoryService {
 
-    public InventoryCrud(){
-        try{
-        connection = DBHikariCP.getDataSource().getConnection();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
-    public void setConnection(Connection connection) {
-        this.connection = connection;
+   // private final CacheManager cacheManager = Caching.getCachingProvider().getCacheManager();
+    //private final Cache<Integer, Inventory> inventoryCache = cacheManager.getCache("inventoryCache", Integer.class, Inventory.class);
+    //private final Cache<String, List> inventoryCacheList = cacheManager.getCache("inventoryCacheList", String.class, List.class);
+    public InventoryService(){
+
     }
 
 
     public List<Inventory> getInventory() {
 
-        try {
+        /*try{
+            List<Inventory> cachedInventory = inventoryCacheList.get("allInventory");
+            System.out.println("1");
+            if(cachedInventory != null){
+                System.out.println("2");
+                return cachedInventory;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }*/
+        try(Connection connection = DBHikariCP.getDataSource().getConnection();
+            PreparedStatement ps = connection.prepareStatement(InventorySql.selectInventory);
+            ResultSet resultSet = ps.executeQuery()) {
 
             List<Inventory> resultInventory = new ArrayList<>();
-            PreparedStatement ps = connection.prepareStatement(InventorySql.selectInventory);
-            ResultSet resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
 
@@ -54,7 +65,9 @@ public class InventoryCrud {
                 resultInventory.add(inventory);
 
             }
+            System.out.println("3");
             InventoryResource.count = resultInventory.size();
+           // inventoryCacheList.put("allInventory", resultInventory);
             return resultInventory;
 
         } catch (Exception e) {
@@ -66,13 +79,12 @@ public class InventoryCrud {
 
     public Object getInventoryById(int id){
 
-        try{
+        try(Connection connection = DBHikariCP.getDataSource().getConnection();
+            PreparedStatement ps = connection.prepareStatement(InventorySql.selectInventoryById)){
 
-            PreparedStatement ps = connection.prepareStatement(InventorySql.selectInventoryById);
             ps.setInt(1, id);
-            ResultSet resultSet = ps.executeQuery();
 
-            if(resultSet.next()){
+            try( ResultSet resultSet = ps.executeQuery()){ if(resultSet.next()){
 
                 Inventory inventoryId = new Inventory();
                 ItemCategory ic = new ItemCategory();
@@ -91,8 +103,8 @@ public class InventoryCrud {
                 return inventoryId;
 
             }
-            return "No inventory exists with such ID";
-
+                return "No inventory exists with such ID";
+            }
 
         }catch(Exception e){e.printStackTrace();}
 
@@ -101,8 +113,9 @@ public class InventoryCrud {
 
     public boolean createInventory(Inventory inventory){
 
-       try{
-        PreparedStatement ps = connection.prepareStatement(InventorySql.insertInventory);
+       try(Connection connection = DBHikariCP.getDataSource().getConnection();
+           PreparedStatement ps = connection.prepareStatement(InventorySql.insertInventory)){
+
         ps.setInt(1, inventory.getId());
         ps.setString(2, inventory.getItem_name());
         ps.setInt(3, inventory.getItem_quantity());
@@ -110,6 +123,7 @@ public class InventoryCrud {
         ps.setInt(5, inventory.getItem_location().getId());
 
         int result = ps.executeUpdate();
+
         if (result > 0) return true;
     } catch (Exception e) {
         e.printStackTrace();
@@ -120,14 +134,16 @@ public class InventoryCrud {
 
     public List<Inventory> getListByCategoryId(int id) {
 
-        try {
+        try(Connection connection = DBHikariCP.getDataSource().getConnection();
+            PreparedStatement ps = connection.prepareStatement(InventorySql.selectByCategoryId)) {
 
             List<Inventory> resultInventory = new ArrayList<>();
-            PreparedStatement ps = connection.prepareStatement(InventorySql.selectByCategoryId);
-            ps.setInt(1, id);
-            ResultSet resultSet = ps.executeQuery();
 
-            while (resultSet.next()) {
+            ps.setInt(1, id);
+
+            try( ResultSet resultSet = ps.executeQuery()){
+
+                while (resultSet.next()) {
 
                 Inventory inventory = new Inventory();
                 ItemCategory ic = new ItemCategory();
@@ -145,7 +161,8 @@ public class InventoryCrud {
 
             }
 
-            return resultInventory;
+                return resultInventory;}
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -155,14 +172,14 @@ public class InventoryCrud {
 
     public List<Inventory> getListByLocationId(int id) {
 
-        try {
+        try (Connection connection = DBHikariCP.getDataSource().getConnection();
+             PreparedStatement ps = connection.prepareStatement(InventorySql.selectByLocationId)){
 
             List<Inventory> resultInventory = new ArrayList<>();
-            PreparedStatement ps = connection.prepareStatement(InventorySql.selectByLocationId);
-            ps.setInt(1, id);
-            ResultSet resultSet = ps.executeQuery();
 
-            while (resultSet.next()) {
+            ps.setInt(1, id);
+
+            try(ResultSet resultSet = ps.executeQuery()){ while (resultSet.next()) {
 
                 Inventory inventory = new Inventory();
                 ItemCategory ic = new ItemCategory();
@@ -179,8 +196,8 @@ public class InventoryCrud {
                 resultInventory.add(inventory);
 
             }
-
-            return resultInventory;
+                return resultInventory;
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -190,33 +207,35 @@ public class InventoryCrud {
 
     public List<Inventory> getListByCategoryAndLocationId(int lid, int cid) {
 
-        try {
+        try(Connection connection = DBHikariCP.getDataSource().getConnection();
+            PreparedStatement ps = connection.prepareStatement(InventorySql.selectByCategoryAndLocationId);) {
 
             List<Inventory> resultInventory = new ArrayList<>();
-            PreparedStatement ps = connection.prepareStatement(InventorySql.selectByCategoryAndLocationId);
             ps.setInt(1, lid);
             ps.setInt(2,cid);
-            ResultSet resultSet = ps.executeQuery();
 
-            while (resultSet.next()) {
+            try( ResultSet resultSet = ps.executeQuery()){
 
-                Inventory inventory = new Inventory();
-                ItemCategory ic = new ItemCategory();
-                ItemLocation il = new ItemLocation();
-                inventory.setId(resultSet.getInt("id"));
-                inventory.setItem_name(resultSet.getString("item_name"));
-                inventory.setItem_quantity(resultSet.getInt("item_quantity"));
-                ic.setId(resultSet.getInt("category_id"));
-                ic.setCategory_name(resultSet.getString("category_name"));
-                inventory.setItem_category(ic);
-                il.setId(resultSet.getInt("location_id"));
-                il.setLocation_name(resultSet.getString("location_name"));
-                inventory.setItem_location(il);
-                resultInventory.add(inventory);
+                while (resultSet.next()) {
 
+                    Inventory inventory = new Inventory();
+                    ItemCategory ic = new ItemCategory();
+                    ItemLocation il = new ItemLocation();
+                    inventory.setId(resultSet.getInt("id"));
+                    inventory.setItem_name(resultSet.getString("item_name"));
+                    inventory.setItem_quantity(resultSet.getInt("item_quantity"));
+                    ic.setId(resultSet.getInt("category_id"));
+                    ic.setCategory_name(resultSet.getString("category_name"));
+                    inventory.setItem_category(ic);
+                    il.setId(resultSet.getInt("location_id"));
+                    il.setLocation_name(resultSet.getString("location_name"));
+                    inventory.setItem_location(il);
+                    resultInventory.add(inventory);
+
+                }
+
+                return resultInventory;
             }
-
-            return resultInventory;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -225,8 +244,9 @@ public class InventoryCrud {
     }
 
     public boolean updateInventory(int id, Inventory inventory){
-        try{
-            PreparedStatement ps = connection.prepareStatement(InventorySql.updateInventory);
+        try(Connection connection = DBHikariCP.getDataSource().getConnection();
+            PreparedStatement ps = connection.prepareStatement(InventorySql.updateInventory)){
+
             ps.setInt(1, id);
             ps.setString(2, inventory.getItem_name());
             ps.setInt(3, inventory.getItem_quantity());
@@ -243,8 +263,9 @@ public class InventoryCrud {
     }
 
     public boolean deleteInventory(int id){
-        try{
-        PreparedStatement ps = connection.prepareStatement(InventorySql.deleteInventory);
+        try(Connection connection = DBHikariCP.getDataSource().getConnection();
+            PreparedStatement ps = connection.prepareStatement(InventorySql.deleteInventory)){
+
         ps.setInt(1, id);
         int resultSet = ps.executeUpdate();
         if(resultSet > 0){

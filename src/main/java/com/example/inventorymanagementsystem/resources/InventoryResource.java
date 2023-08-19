@@ -1,56 +1,72 @@
 package com.example.inventorymanagementsystem.resources;
 
 import com.example.inventorymanagementsystem.domain.Inventory;
-import com.example.inventorymanagementsystem.services.InventoryCrud;
+import com.example.inventorymanagementsystem.services.BasicAuth;
+import com.example.inventorymanagementsystem.services.InventoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-
 import javax.ws.rs.*;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 @Path("/inventory")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public class InventoryResource {
 
     private static final Logger logger = LoggerFactory.getLogger(InventoryResource.class);
     public static int count = 0;
-    InventoryCrud crud = new InventoryCrud();
-
+    InventoryService crud = new InventoryService();
 
     @GET
     @Path("/list")
-    public Response getInventoryList(@QueryParam("location") int locationID, @QueryParam("category")int categoryID) {
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getInventoryList(@Context ContainerRequestContext req, @QueryParam("location") int locationID, @QueryParam("category")int categoryID) {
 
-        try {
-            logger.info(getLogMessage("getInventoryList", "Request received", "GET"));
-            if(locationID > 0 && categoryID > 0){
-                logger.info(getLogMessage("getInventoryList", "Response Sent", "GET"));
-                return Response.status(Response.Status.OK)
-                        .entity(crud.getListByCategoryAndLocationId(locationID, categoryID))
-                        .build();
-            }
-            if(locationID > 0){
-                logger.info(getLogMessage("getInventoryList", "Response Sent", "GET"));
-                return Response.status(Response.Status.OK).entity(crud.getListByLocationId(locationID)).build();
-            }
-            logger.info(getLogMessage("getInventoryList", "Response Sent", "GET"));
-            return Response.status(Response.Status.OK).entity(crud.getInventory()).build();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(!BasicAuth.isAuthentication(req, Arrays.asList("admin", "Manager"))) {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity("Unauthorized User!")
+                    .build();
         }
-        logger.warn(getLogMessage("getInventoryList", "Can't Process Request", "GET"));
-        return Response.status(Response.Status.BAD_REQUEST).build();
-    }
+
+            try {
+                logger.info(getLogMessage("getInventoryList", "Request received", "GET"));
+                if (locationID > 0 && categoryID > 0) {
+                    logger.info(getLogMessage("getInventoryList", "Response Sent", "GET"));
+                    return Response.status(Response.Status.OK)
+                            .entity(crud.getListByCategoryAndLocationId(locationID, categoryID))
+                            .build();
+                }
+                if (locationID > 0) {
+                    logger.info(getLogMessage("getInventoryList", "Response Sent", "GET"));
+                    return Response.status(Response.Status.OK).entity(crud.getListByLocationId(locationID)).build();
+                }
+                logger.info(getLogMessage("getInventoryList", "Response Sent", "GET"));
+                return Response.status(Response.Status.OK).entity(crud.getInventory()).build();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            logger.warn(getLogMessage("getInventoryList", "Can't Process Request", "GET"));
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+
 
     // GET a specific inventory by ID
     @GET
     @Path("/{id}")
-    public Response getInventoryById(@PathParam("id") int id) {
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getInventoryById(@Context ContainerRequestContext req , @PathParam("id") int id) {
+
+        if(!BasicAuth.isAuthentication(req, Arrays.asList("Admin", "Manager"))) {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity("Unauthorized User!")
+                    .build();
+        }
         try {
             logger.info(getLogMessage("getInventoryById", "Request Received", "GET"));
             logger.info(getLogMessage("getInventoryById", "Response Sent", "GET"));
@@ -68,8 +84,15 @@ public class InventoryResource {
     // Create a new customer
     @POST
     @Path("/add")
-    public Response createInventory(Inventory inventory) {
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createInventory(@Context ContainerRequestContext req ,Inventory inventory) {
 
+        if(!BasicAuth.isAuthentication(req, Arrays.asList("Admin", "Manager"))) {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity("Unauthorized User!")
+                    .build();
+        }
         try {
            logger.info(getLogMessage("createInventory", "Request received", "POST"));
             inventory.setId((count + 1));   // Generate a unique ID and add the customer to the list
@@ -93,8 +116,15 @@ public class InventoryResource {
 
     @GET
     @Path("/listByCategory")
-    public Response fetchByCategory(@QueryParam("category") int categoryID){
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response fetchByCategory(@Context ContainerRequestContext req , @QueryParam("category") int categoryID){
 
+        if(!BasicAuth.isAuthentication(req, Arrays.asList("Admin", "Manager"))) {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity("Unauthorized User!")
+                    .build();
+        }
         try {
             logger.info(getLogMessage("fetchByCategory", "Response Sent", "GET"));
             return Response.status(Response.Status.OK).entity(crud.getListByCategoryId(categoryID)).build();
@@ -111,9 +141,15 @@ public class InventoryResource {
 
     @PUT
     @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateInventory(@Context ContainerRequestContext req ,@PathParam("id") int id, Inventory inventory){
 
-    public Response updateInventory(@PathParam("id") int id, Inventory inventory){
-
+        if(!BasicAuth.isAuthentication(req, Arrays.asList("Admin", "Manager"))) {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity("Unauthorized User!")
+                    .build();
+        }
         try {
             logger.info(getLogMessage("updateInventory", "Request Received", "PUT"));
             inventory.setId(id);
@@ -136,8 +172,15 @@ public class InventoryResource {
 
     @DELETE
     @Path("/{id}")
-    public Response deleteInventory(@PathParam("id") int id){
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response deleteInventory(@Context ContainerRequestContext req ,@PathParam("id") int id){
 
+        if(!BasicAuth.isAuthentication(req, Arrays.asList("Admin", "Manager"))) {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity("Unauthorized User!")
+                    .build();
+        }
         try{
             logger.info(getLogMessage("deleteInventory", "Request Received", "DELETE"));
             if (crud.deleteInventory(id)){

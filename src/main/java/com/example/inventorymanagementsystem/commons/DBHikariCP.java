@@ -1,4 +1,4 @@
-package com.example.inventorymanagementsystem.services;
+package com.example.inventorymanagementsystem.commons;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

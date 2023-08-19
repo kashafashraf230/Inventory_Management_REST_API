@@ -1,0 +1,11 @@
+<persistence-unit name="YourPersistenceUnitName" transaction-type="JTA">
+    <!-- ... other settings ... -->
+    <properties>
+        <property name="javax.persistence.sharedCache.mode" value="ENABLE_SELECTIVE"/>
+        <property name="javax.persistence.cache.storeMode" value="USE"/>
+        <property name="javax.persistence.cache.retrieveMode" value="USE"/>
+        <property name="javax.persistence.cache.provider" value="org.hibernate.cache.jcache.JCacheRegionFactory"/>
+        <property name="hibernate.javax.cache.provider" value="org.jsr107.ri.spi.RICachingProvider"/>
+        <property name="hibernate.javax.cache.uri" value="hazelcast.xml"/>
+    </properties>
+</persistence-unit>
